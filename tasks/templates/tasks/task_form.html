@@ -1,0 +1,41 @@
+{% extends 'tasks/base.html' %}
+{% block title %}{{ heading }}{% endblock %}
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-md-7">
+        <h2 class="mb-3">{{ heading }}</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label">Title</label>
+                {{ form.title }}
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Description</label>
+                {{ form.description }}
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Priority</label>
+                    {{ form.priority }}
+                    {% if not task %}
+                        <div class="form-text">Leave as-is and the AI helper will suggest a priority from your title/description.</div>
+                    {% endif %}
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Deadline</label>
+                    {{ form.deadline }}
+                </div>
+            </div>
+            <div class="form-check mb-3">
+                {{ form.completed }}
+                <label class="form-check-label">Completed</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Task</button>
+            <a href="{% url 'task_list' %}" class="btn btn-outline-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

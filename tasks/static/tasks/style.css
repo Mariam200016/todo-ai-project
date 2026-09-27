@@ -1,0 +1,18 @@
+body {
+    background-color: #f7f8fa;
+}
+
+.list-group-item {
+    border-radius: 8px !important;
+    margin-bottom: 8px;
+    border: 1px solid #e5e7eb !important;
+}
+
+.navbar-brand {
+    letter-spacing: 0.3px;
+}
+
+.card {
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+}

@@ -1,0 +1,21 @@
+{% extends 'tasks/base.html' %}
+{% block title %}AI Daily Plan{% endblock %}
+{% block content %}
+
+<h2 class="mb-3">✨ Your AI-Organized Daily Plan</h2>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <pre class="mb-0" style="white-space: pre-wrap; font-family: inherit;">{{ plan }}</pre>
+    </div>
+</div>
+
+<p class="text-muted small">
+    This plan is generated automatically from your pending tasks' priority and
+    deadlines. Set an <code>OPENAI_API_KEY</code> environment variable to have
+    a real language model write the plan instead of the built-in organizer.
+</p>
+
+<a href="{% url 'task_list' %}" class="btn btn-outline-secondary">Back to Tasks</a>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+databases:
+  - name: todo-ai-db
+    plan: free
+    databaseName: todo_ai
+    user: todo_ai
+
+services:
+  - type: web
+    plan: free
+    name: todo-ai-organizer
+    runtime: python
+    buildCommand: ./build.sh
+    startCommand: python -m gunicorn todo_project.wsgi:application
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: todo-ai-db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 2
